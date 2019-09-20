@@ -20,14 +20,7 @@ typedef long long ll;
 typedef pair<int, int> pii;
 
 const int MOD = (int) 1e9 + 7;
-const int BASE = 31;
 const int N = (int) 1e6 + 7;
-
-const int M = 2049;
-
-ll a[N], b[N];
-ll dp[N][3];
-
 const ll INF = (ll) 1e18 + 7;
 
 int main() {
@@ -36,23 +29,8 @@ int main() {
 		freopen("input.txt", "r", stdin);
 		freopen("output.txt", "w", stdout);
 	#endif
-	int n;
-	string s;
-	cin >> n >> s;
-	int half = n / 2;
-	int sumF = 0, numF = 0, sumS = 0, numS = 0;
-	for (int i = 0; i < half; i++) {
-		if (s[i] != '?') {
-			sumF += s[i] - '0';
-			numF++;
-		}
-	}
-	for (int i = half; i < n; i++) {
-		if (s[i] != '?') {
-			sumS += s[i] - '0';
-			numS++;
-		}
-	}
-	
+	int a, b;
+	cin >> a >> b;
+	cout << a + b;	
 	return 0;
 }
