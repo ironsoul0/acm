@@ -29,23 +29,31 @@ int main() {
 		freopen("input.txt", "r", stdin);
 		freopen("output.txt", "w", stdout);
 	#endif
-	int n, k;
+	int n;
 	string s;
-	cin >> n >> k >> s;
-	if (s.size() == 1) {
-		if (k == 1) cout << 0; else cout << s;
-		return 0;
-	}
-	if (s[0] != '1' && k != 0) {
-		s[0] = '1';
-		k--;
-	}
-	for (int i = 1; i < n && k > 0; i++) {
-		if (s[i] != '0') {
-			s[i] = '0';
-			k--;
+	cin >> n >> s;
+	ll all = n * 1ll * (n + 1) / 2, bad = 0;
+	s = "#" + s;
+	int last_a = 0, last_b = 0;
+	for (int i = 1; i <= n; i++) {
+		if (s[i] == 'A') {
+			if (s[i - 1] != 'A') {
+				bad += i - last_a;
+			} else {
+				bad++;
+				if (last_b > 0) bad++;
+			}
+			last_a = i;
+		} else {
+			if (s[i - 1] != 'B') {
+				bad += i - last_b;
+			} else {
+				bad++;
+				if (last_a > 0) bad++;
+			}
+			last_b = i;
 		}
-	}
-	cout << s;
+	}	
+	cout << all - bad;
 	return 0;
 }
