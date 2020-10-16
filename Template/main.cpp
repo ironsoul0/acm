@@ -29,6 +29,19 @@ int main() {
 		freopen("input.txt", "r", stdin);
 		freopen("output.txt", "w", stdout);
 	#endif
-		
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, x, a, b;
+		cin >> n >> x >> a >> b;
+		if (a > b) swap(a, b);
+		int shift = min(x, a - 1);
+		a -= shift;
+		x -= shift;
+		shift = min(x, n - b);
+		b += shift;
+		x -= shift;
+		cout << b - a << endl;
+	}
 	return 0;
 }
