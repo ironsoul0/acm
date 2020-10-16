@@ -23,6 +23,9 @@ const int MOD = (int) 1e9 + 7;
 const int N = (int) 1e6 + 7;
 const ll INF = (ll) 1e18 + 7;
 
+// 0 - work
+// 1 - vacation
+
 int main() {
 	ios_base::sync_with_stdio(0);
 	#ifdef LOCAL
@@ -31,22 +34,17 @@ int main() {
 	#endif
 	int n;
 	cin >> n;
-	map<int, int> even, odd;
-	odd[0] = 1;
-	ll ans = 0;
-	int cur = 0;
+	vector<ll> a(n), b(n), c(n);
+	for (int i = 0; i < n; i++) cin >> a[i];
+	for (int i = 0; i < n; i++) cin >> b[i];
+	sort(a.begin(), a.end());
+	sort(b.rbegin(), b.rend());
+	ll mini = INF;
 	for (int i = 0; i < n; i++) {
-		int x;
-		cin >> x;
-		cur ^= x;
-		if (i & 1) {
-			ans += odd[cur];
-			odd[cur]++;
-		} else {
-			ans += even[cur];
-			even[cur]++;
-		}
+		c[i] = a[i] + b[i];
+		// cout << a[i] + b[i] << endl;
 	}
-	cout << ans;
+	sort(c.begin(), c.end());
+	cout << c.back() - c.front();
 	return 0;
 }
